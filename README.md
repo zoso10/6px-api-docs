@@ -1,4 +1,4 @@
-# 6px API
+# 6px API Documentation
 
 ## OVERVIEW
 
