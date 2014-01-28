@@ -737,4 +737,4 @@ The 6px API has full support for web sockets, allowing client and server side SD
 
 ## HELP US HELP YOU
 
-Please let us how we can make this API better. If you have a specific feature request or found a bug, please drop us a line at ops@6px.io.
+Please let us how we can make this API better. If you have a specific feature request or found a bug, please open up a GitHub issue or drop us a line at ops@6px.io.
