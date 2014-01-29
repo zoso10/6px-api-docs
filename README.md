@@ -336,7 +336,7 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?processed.images.latlon={near}4
 	]
 }
 ```
-#### DATA `mixed`
+#### DATA `object`
 An `object` that allows you to store custom data such as a database id, name or email.
 
 **Example Store:**
