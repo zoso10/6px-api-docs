@@ -337,15 +337,21 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?processed.images.latlon={near}4
 }
 ```
 #### DATA `mixed`
-An empty `object` or `array` that allows you to store custom information.
+An `object` that allows you to store custom data such as a database id, name or email.
 
-**Example:**
+**Example Store:**
 ```json
 {
 	"data": {
-		"user_id": "1234"
+		"id": "1234",
+		"email": "foo@example.com"
 	}
 }
+```
+
+You can then easily locate jobs using with a simple [search](#search):
+```bash
+$ curl https://api.6px.io/v1/users/:user_id/jobs?data.id=1234
 ```
 
 #### CALLBACK `object`
