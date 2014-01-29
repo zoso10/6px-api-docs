@@ -29,6 +29,7 @@ To give you an idea of how to use the API, we have annotated our documentation w
     * [Resize](#resize)
     * [Crop](#crop)
     * [Filter](#filter)
+    * [Layer](#layer)
 * [Input JSON](#input-json)
 * [Output JSON](#output-json)
 * [Endpoints](#endpoints)
@@ -301,6 +302,43 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?processed.images.latlon={near}4
 	}
 }
 ```
+
+### LAYER
+
+| Options        | Type    | Required | Description                                                          											|
+|----------------|---------|----------|-----------------------------------------------------------------------------------------------------------------|
+| `x`            | Number  | False    | The `x` position for the layered image.  																		|
+| `y`            | Number  | False    | The `y` position for the layered image.  																		|
+| `opacity`      | Number  | False    | Default value is `1`. Can be omitted if opaque is desired effect.                 			       				|
+| `ref`          | String  | False    | Image that you would like to layer on top. This is a reference from the `input` array.                  		|
+
+
+**Example 1:**
+```json
+{
+	"method": "layer",
+	"options": {
+		"x": 0,
+		"y": 0,
+		"opacity": 0.6,
+		"ref": "img2"
+	}
+}
+```
+
+**Example 2:**
+```json
+{
+	"method": "layer",
+	"options": {
+		"opacity": 0.6,
+		"ref": "img2"
+	}
+}
+```
+
+> The `x` and `y` values can be omitted if you want to play your layered image at the top left corner (0,0)
+
 ## INPUT JSON
 
 ### SAMPLE
@@ -743,4 +781,4 @@ The 6px API has full support for web sockets, allowing client and server side SD
 
 ## HELP US HELP YOU
 
-Please let us how we can make this API better. If you have a specific feature request or found a bug, please open up a GitHub issue or drop us a line at ops@6px.io.
+Please let us how we can make this API better. If you have a specific feature request or found a bug, please drop us a line at ops@6px.io.
