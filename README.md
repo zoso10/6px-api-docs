@@ -583,9 +583,7 @@ A full URL without the filename to which the output image(s) will be uploaded. I
 	],
 	"status": "complete",
 	"callback": {
-	    "url": "http://example.com/callback",
-	    "status": "complete",
-	    "error": ""
+	    "url": "http://example.com/callback"
 	},
 	"data": {}
 }
@@ -599,11 +597,13 @@ Contains processing information obtained while processing the image.
 ##### DURATION `object`
 Benchmarks for various tasks for the job.
 
-| Value        | Type   | Description
-|--------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `total`      | Float  | The total time in seconds taken to complete a job. The timer starts as soon as a job is received and stopps when the job is complete. If you are submitting a batch job, this will be the total time required to process all of the jobs combined.  |
-| `upload`     | Float  | The total time in seconds taken to upload all of the outputs in your job.   																		                                                                                                |
-| `download`   | Float  | The total time in seconds taken to download all of the images referenced in the inputs array.                			       																													|
+| Value        | Type     | Description
+|--------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `start`      | Datetime | The time shown as an ISO8601 Datetime that the job started processing.          																																									     |
+| `end`        | Datetime | The time shown as an ISO8601 Datetime that the job completed processing.          																																								       |
+| `total`      | Number   | The total time in milliseconds taken to complete a job. The timer starts as soon as a job is received and stopps when the job is complete. If you are submitting a batch job, this will be the total time required to process all of the jobs combined.  |
+| `upload`     | Number   | The total time in milliseconds taken to upload all of the outputs in your job.   																		                                                                                                |
+| `download`   | Number   | The total time in milliseconds taken to download all of the images referenced in the inputs array. 																																					  |                			       																													|
 
 ##### BYTES `number`
 Size of processed data in bytes. If you are submitting a batch job, this number will be the sum of all processed images.
@@ -679,9 +679,7 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs/52e1f64007438cb
 	],
 	"status": "complete",
 	"callback": {
-	    "url": "http://example.com/callback",
-	    "status": "complete",
-	    "error": ""
+	    "url": "http://example.com/callback"
 	},
 	"data": {}
 }
@@ -733,9 +731,7 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
 		],
 		"status": "complete",
 		"callback": {
-		    "url": "http://example.com/callback",
-		    "status": "complete",
-		    "error": ""
+		    "url": "http://example.com/callback"
 		},
 		"data": {}
 	},
@@ -773,9 +769,7 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
 		],
 		"status": "complete",
 		"callback": {
-		    "url": "http://example.com/callback",
-		    "status": "complete",
-		    "error": ""
+		    "url": "http://example.com/callback"
 		},
 		"data": {}
 	}
