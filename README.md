@@ -59,7 +59,7 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?key=YOUR_KEY&secret=YOUR_SECRET
 
 ## DATE FORMAT
 
-6px returns JSON for all API calls. Dates are passed as an [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) formatted datetime. 
+6px returns JSON for all API calls. Dates are passed as an [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) formatted datetime.
 
 ```bash
 2014-01-23T19:40:42+17:00
@@ -114,7 +114,7 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?sort_by=created,asc
 
 ## SEARCH `experimental`
 
-The search functionality is optimized to help you find jobs using query parameters. 
+The search functionality is optimized to help you find jobs using query parameters.
 
 **For example:**
 * Image(s) within a specific area
@@ -185,7 +185,7 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?processed.images.latlon={near}4
 |---------|---------|------------|----------------------------------------------------------------------|
 | `height`  | Number  | False    | -                                                                    |
 | `width`   | Number  | False    | -                                                                    |
- 
+
 **Example 1:**
 ```json
 {
@@ -207,7 +207,7 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?processed.images.latlon={near}4
 }
 ```
 
-> **Height and/or width are required parameters. Automatic proprotions provided if either parameter is omitted.** 
+> **Height and/or width are required parameters. Automatic proprotions provided if either parameter is omitted.**
 
 ### CROP
 
@@ -218,7 +218,7 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?processed.images.latlon={near}4
 | `x`       | Number  | False    | -                                                                              |
 | `y`       | Number  | False    | -                                                                              |
 | `face`    | Boolean | False    | Crops to dominant face. Omit `x` and `y` coordinates when using this option.   |
-| `padding` | Number  | False    | Sets specified padding when using `face` parameter.                            |                                                             
+| `padding` | Number  | False    | Sets specified padding when using `face` parameter.                            |
 
 **Example 1:**
 ```json
@@ -277,7 +277,7 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?processed.images.latlon={near}4
 | `stackBlur`    | Number  | False    | Pass in the  blue radius. `0` - `100` are accepted values. |
 
 Undocumented: `curves`
- 
+
 **Example 1:**
 ```json
 {
@@ -404,7 +404,7 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?data.id=1234
 When your job is complete a `POST` will be sent to an optional callback URL. The `POST` body will contain the full JSON payload from the processed job.
 
 #### INPUT `array`
-The `input` array specifies the images that are to be used when processing the job. Input should be a publicly accessable URL or a valid [data URI](https://developer.mozilla.org/en-US/docs/data_URIs). 
+The `input` array specifies the images that are to be used when processing the job. Input should be a publicly accessable URL or a valid [data URI](https://developer.mozilla.org/en-US/docs/data_URIs).
 
 **The following image formats are supported:**
 
@@ -481,7 +481,7 @@ Specifies what [methods](#methods) to run against that particular output.
 ```
 
 ##### TYPE `string`
-MIME type to save the image as. 
+MIME type to save the image as.
 
 **The following MIME types are supported:**
 
@@ -596,13 +596,19 @@ The output from a job contains all of the fields that were specified in the inpu
 #### PROCESSED `object`
 Contains processing information obtained while processing the image.
 
-##### DURATION `float`
-Time in seconds that it took to complete the job. The timer starts as soon as the job is received by our workers and stops when the job is complete. If you are submitting a batch job, this will be the total time required to process all images.
+##### DURATION `object`
+Benchmarks for various tasks for the job.
+
+| Value        | Type   | Description
+|--------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `total`      | Float  | The total time in seconds taken to complete a job. The timer starts as soon as a job is received and stopps when the job is complete. If you are submitting a batch job, this will be the total time required to process all of the jobs combined.  |
+| `upload`     | Float  | The total time in seconds taken to upload all of the outputs in your job.   																		                                                                                                |
+| `download`   | Float  | The total time in seconds taken to download all of the images referenced in the inputs array.                			       																													|
 
 ##### BYTES `number`
 Size of processed data in bytes. If you are submitting a batch job, this number will be the sum of all processed images.
 
-#### STATUS 'string'
+#### STATUS `string`
 Will be one of the following:
 
 * `pending` Default status before job is picked up by worker
@@ -783,9 +789,6 @@ The 6px API has full support for web sockets, allowing client and server side SD
 ## SDKs
 
 * [Javascript](https://github.com/6px-io/6px-js-sdk)
-* [Node.js](https://github.com/6px-io/6px-node-sdk)
-* [Python](https://github.com/6px-io/6px-python-sdk)
-* [PHP](https://github.com/6px-io/6px-php-sdk)
 
 ## HELP US HELP YOU
 
