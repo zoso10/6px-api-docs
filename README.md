@@ -313,11 +313,11 @@ Undocumented: `curves`
 
 ### LAYER
 
-| Options        | Type    | Required | Description                                                          											|
+| Options        | Type    | Required | Description                                                          										   |
 |----------------|---------|----------|-----------------------------------------------------------------------------------------------------------------|
-| `x`            | Number  | False    | The `x` position for the layered image.  																		|
-| `y`            | Number  | False    | The `y` position for the layered image.  																		|
-| `opacity`      | Number  | False    | Default value is `1`. Can be omitted if opaque is desired effect.                 			       				|
+| `x`            | Number  | False    | The `x` position for the layered image.  																	   |
+| `y`            | Number  | False    | The `y` position for the layered image.  																	   |
+| `opacity`      | Number  | False    | Default value is `1`. Can be omitted if opaque is desired effect.                 			       		   |
 | `ref`          | String  | False    | Image that you would like to layer on top. This is a reference from the `input` array.                  		|
 
 
@@ -346,6 +346,44 @@ Undocumented: `curves`
 ```
 
 > The `x` and `y` values can be omitted if you want to play your layered image at the top left corner (0,0)
+
+### ANALYZE
+
+| Options        | Required | Description                                                          									            	                                   |
+|----------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `exif`         | False    | The `x` position for the layered image.  																	                                               |
+| `color`        | False    | Analyzing the color returns the `pallete` or `dominant` colors in the image. This is specified via the `context` parameter. The default context is palette. |  																	   |
+| `nudity`       | False    | This is an experimental analysis feature. It's accuracy is approximately 60%.      																		 |
+
+**Example 1:**
+```json
+{
+	"method": "analyze",
+	"options": {
+		"type": "exif"
+	}
+}
+```
+
+**Example 2:**
+```json
+{
+	"method": "analyze",
+	"options": {
+		"type": "color",
+		"context": "palette"
+	}
+}
+```
+**Example 3:**
+```json
+{
+	"method": "analyze",
+	"options": {
+		"type": "nudity"
+	}
+}
+```
 
 ## INPUT JSON
 
