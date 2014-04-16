@@ -329,7 +329,7 @@ Undocumented: `curves`
 		"x": 0,
 		"y": 0,
 		"opacity": 0.6,
-		"ref": "img2"
+		"ref": "img1"
 	}
 }
 ```
@@ -358,7 +358,7 @@ Undocumented: `curves`
 		"url": "http://example.com/callback"
 	},
 	"input": {
-		"img1": "http://example.com/path/to/image1.jpg"
+		"img": "http://example.com/path/to/image1.jpg"
 	},
 	"output": [
 		{
@@ -373,7 +373,7 @@ Undocumented: `curves`
 			],
 			"type": "image/png",
 			"ref": {
-				"img1": false
+				"img": false
 			},
 			"url": "s3://key:secret@bucket/path"
 		}
@@ -429,7 +429,7 @@ Specifies operations that are to be run against the images in the `input` array.
 			],
 			"type": "image/png",
 			"ref": {
-				"main"
+				"main": false
 			},
 			"tag": "6e86e93b7c0f",
 			"url": "s3://key:secret@bucket/path"
@@ -445,7 +445,7 @@ Specifies operations that are to be run against the images in the `input` array.
 			],
 			"type": "image/png",
 			"ref": [
-				"main"
+				"main": false
 			],
 			"url": "s3://key:secret@bucket/path"
 		}
@@ -487,7 +487,7 @@ MIME type to save the image as.
 * `image/gif`
 
 ##### REF `object`
-Specifies which input(s) to use. If we specify more than one ref in this block, it will duplicate whatever is in this block for each of the input indexes defined.
+Specifies which input(s) to use. If we specify more than one ref in this block, it will duplicate whatever is in this block for each of the input indexes defined. If the value is set to false, a random filename will be generated.
 
 **For example, if we have the following input object containing 4 inputs:**
 ```json
@@ -515,9 +515,9 @@ Specifies which input(s) to use. If we specify more than one ref in this block, 
 					}
 				}
 			],
-			"ref": [
-				"img3"
-			]
+			"ref": {
+				"img3": "image.png"
+			}
 		}
 	]
 }
@@ -595,7 +595,8 @@ A full URL without the filename to which the output image(s) will be uploaded. I
 	"input": {
 		"bus": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52d5c05422a47_1.JPG"
 	},
-	"status": "complete"
+	"status": "complete",
+	"data": {}
 }
 ```
 
@@ -660,16 +661,28 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs/52e1f64007438cb
 ```json
 {
 	"__v": 0,
-	"_id": "52e1f64007438cb08073d5e8",
+	"_id": "52e1f64007438cb08073d5e9",
 	"user_id": "52c747dc04f452f766000001",
-	"modified": "2014-01-24T05:12:34.232Z",
-	"created": "2014-01-24T05:12:32.466Z",
+	"modified": "2014-04-16T21:21:36.544Z",
+	"created": "2014-04-16T21:20:54.403Z",
 	"processed": {
-		"duration": 0.21689900000000006,
-		"bytes": 317955
-	},
-	"input": {
-		"main": "http://example.com/path/to/image.jpg"
+		"duration": {
+			"start": "2014-04-16T21:20:54.474Z",
+			"upload": 19842,
+			"download": 8424,
+			"total": 41999,
+			"end": "2014-04-16T21:21:36.473Z"
+		},
+		"output": {
+			"bus": {
+				"info": {
+					"bytes": 88202,
+					"width": 250,
+					"height": 166
+				}
+			}
+		},
+		"bytes": 88202
 	},
 	"output": [
 		{
@@ -677,23 +690,28 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs/52e1f64007438cb
 				{
 					"method": "resize",
 					"options": {
-						"width": 200,
-						"height": 200
+						"width": 250
+					}
+				},
+				{
+					"method": "filter",
+					"options": {
+						"sepia": 70,
+						"hue": 20
 					}
 				}
 			],
+			"url": "6px",
 			"type": "image/png",
-			"ref": [
-				"main"
-			],
-			"tag": "6e86e93b7c0f",
-			"url": "s3://key:secret@bucket/path"
+			"ref": {
+				"bus": false
+			}
 		}
 	],
-	"status": "complete",
-	"callback": {
-	    "url": "http://example.com/callback"
+	"input": {
+		"bus": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52d5c05422a47_1.JPG"
 	},
+	"status": "complete",
 	"data": {}
 }
 ```
@@ -712,16 +730,28 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
 [
 	{
 		"__v": 0,
-		"_id": "52e1f64007438cb08073d5e8",
+		"_id": "52e1f64007438cb08073d5e9",
 		"user_id": "52c747dc04f452f766000001",
-		"modified": "2014-01-24T05:12:34.232Z",
-		"created": "2014-01-24T05:12:32.466Z",
+		"modified": "2014-04-16T21:21:36.544Z",
+		"created": "2014-04-16T21:20:54.403Z",
 		"processed": {
-			"duration": 0.21689900000000006,
-			"bytes": 317955
-		},
-		"input": {
-			"main": "http://example.com/path/to/image.jpg"
+			"duration": {
+				"start": "2014-04-16T21:20:54.474Z",
+				"upload": 19842,
+				"download": 8424,
+				"total": 41999,
+				"end": "2014-04-16T21:21:36.473Z"
+			},
+			"output": {
+				"bus": {
+					"info": {
+						"bytes": 88202,
+						"width": 250,
+						"height": 166
+					}
+				}
+			},
+			"bytes": 88202
 		},
 		"output": [
 			{
@@ -729,37 +759,68 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
 					{
 						"method": "resize",
 						"options": {
-							"width": 200,
-							"height": 200
+							"width": 250
+						}
+					},
+					{
+						"method": "filter",
+						"options": {
+							"sepia": 70,
+							"hue": 20
 						}
 					}
 				],
+				"url": "6px",
 				"type": "image/png",
-				"ref": [
-					"main"
-				],
-				"tag": "6e86e93b7c0f",
-				"url": "s3://key:secret@bucket/path"
+				"ref": {
+					"bus": false
+				}
 			}
 		],
-		"status": "complete",
-		"callback": {
-		    "url": "http://example.com/callback"
+		"input": {
+			"bus": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52d5c05422a47_1.JPG"
 		},
+		"status": "complete",
 		"data": {}
 	},
 	{
 		"__v": 0,
-		"_id": "52e1f64007438cb08073d5e9",
-		"user_id": "52c747dc04f452f766000001",
-		"modified": "2014-01-24T05:12:34.232Z",
-		"created": "2014-01-24T05:12:32.466Z",
+		"_id": "534ef43674b502000000edd4",
+		"user_id": "5344f3842b89de102752424b",
+		"modified": "2014-04-16T21:21:36.544Z",
+		"created": "2014-04-16T21:20:54.403Z",
 		"processed": {
-			"duration": 0.21689900000000006,
-			"bytes": 317955
-		},
-		"input": {
-			"main": "http://example.com/path/to/image.jpg"
+			"duration": {
+				"start": "2014-04-16T21:20:54.474Z",
+				"upload": 19842,
+				"download": 8424,
+				"total": 41999,
+				"end": "2014-04-16T21:21:36.473Z"
+			},
+			"output": {
+				"farm": {
+					"info": {
+						"bytes": 16033211,
+						"width": 4608,
+						"height": 3456
+					}
+				},
+				"forest": {
+					"info": {
+						"bytes": 6814070,
+						"width": 2300,
+						"height": 1533
+					}
+				},
+				"bus": {
+					"info": {
+						"bytes": 88202,
+						"width": 250,
+						"height": 166
+					}
+				}
+			},
+			"bytes": 22935483
 		},
 		"output": [
 			{
@@ -767,22 +828,34 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
 					{
 						"method": "resize",
 						"options": {
-							"width": 200,
-							"height": 200
+							"width": 250
+						}
+					},
+					{
+						"method": "filter",
+						"options": {
+							"sepia": 70,
+							"hue": 20
 						}
 					}
 				],
+				"url": "6px",
 				"type": "image/png",
-				"ref": [
-					"main"
-				],
-				"tag": "6e86e93b7c0f",
-				"url": "s3://key:secret@bucket/path"
+				"ref": {
+					"bus": false,
+					"forest": false,
+					"farm": false
+				}
 			}
 		],
+		"input": {
+			"bus": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52d5c05422a47_1.JPG",
+			"forest": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52dbe5607f0db_1.JPG",
+			"farm": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52d7cdd15b9a3_1.JPG"
+		},
 		"status": "complete",
 		"callback": {
-		    "url": "http://example.com/callback"
+			"url": ""
 		},
 		"data": {}
 	}
