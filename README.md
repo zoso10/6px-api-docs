@@ -444,9 +444,9 @@ Specifies operations that are to be run against the images in the `input` array.
 				}
 			],
 			"type": "image/png",
-			"ref": [
+			"ref": {
 				"main": false
-			],
+			},
 			"url": "s3://key:secret@bucket/path"
 		}
 	]
