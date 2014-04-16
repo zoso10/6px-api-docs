@@ -358,8 +358,7 @@ Undocumented: `curves`
 		"url": "http://example.com/callback"
 	},
 	"input": {
-		"img1": "http://example.com/path/to/image1.jpg",
-		"img2": "http://example.com/path/to/image2.jpg"
+		"img1": "http://example.com/path/to/image1.jpg"
 	},
 	"output": [
 		{
@@ -373,10 +372,9 @@ Undocumented: `curves`
 				}
 			],
 			"type": "image/png",
-			"ref": [
-				"img1"
-			],
-			"tag": "6e86e93b7c0f",
+			"ref": {
+				"img1": false
+			},
 			"url": "s3://key:secret@bucket/path"
 		}
 	]
@@ -430,9 +428,9 @@ Specifies operations that are to be run against the images in the `input` array.
 				}
 			],
 			"type": "image/png",
-			"ref": [
+			"ref": {
 				"main"
-			],
+			},
 			"tag": "6e86e93b7c0f",
 			"url": "s3://key:secret@bucket/path"
 		},
@@ -449,7 +447,6 @@ Specifies operations that are to be run against the images in the `input` array.
 			"ref": [
 				"main"
 			],
-			"tag": "6e86e93b7c0f",
 			"url": "s3://key:secret@bucket/path"
 		}
 	]
@@ -489,10 +486,10 @@ MIME type to save the image as.
 * `image/jpeg`
 * `image/gif`
 
-##### REF `array`
+##### REF `object`
 Specifies which input(s) to use. If we specify more than one ref in this block, it will duplicate whatever is in this block for each of the input indexes defined.
 
-**For example, if we have the following input object containg 4 inputs:**
+**For example, if we have the following input object containing 4 inputs:**
 ```json
 {
 	"input": {
@@ -526,9 +523,6 @@ Specifies which input(s) to use. If we specify more than one ref in this block, 
 }
 ```
 
-##### TAG `string`
-An optional unique identifer and filename for the given output. If a tag is not provided, we will automatically assign a unique string.
-
 ##### URL `string`
 A full URL without the filename to which the output image(s) will be uploaded. If an output URL is not specified, your image(s) will automatically be uploaded and served from the 6px CDN.
 
@@ -553,14 +547,26 @@ A full URL without the filename to which the output image(s) will be uploaded. I
 	"__v": 0,
 	"_id": "52e1f64007438cb08073d5e9",
 	"user_id": "52c747dc04f452f766000001",
-	"modified": "2014-01-24T05:12:34.232Z",
-	"created": "2014-01-24T05:12:32.466Z",
+	"modified": "2014-04-16T21:21:36.544Z",
+	"created": "2014-04-16T21:20:54.403Z",
 	"processed": {
-		"duration": 0.21689900000000006,
-		"bytes": 317955
-	},
-	"input": {
-		"main": "http://example.com/path/to/image.jpg"
+		"duration": {
+			"start": "2014-04-16T21:20:54.474Z",
+			"upload": 19842,
+			"download": 8424,
+			"total": 41999,
+			"end": "2014-04-16T21:21:36.473Z"
+		},
+		"output": {
+			"bus": {
+				"info": {
+					"bytes": 88202,
+					"width": 250,
+					"height": 166
+				}
+			}
+		},
+		"bytes": 88202
 	},
 	"output": [
 		{
@@ -568,31 +574,35 @@ A full URL without the filename to which the output image(s) will be uploaded. I
 				{
 					"method": "resize",
 					"options": {
-						"width": 200,
-						"height": 200
+						"width": 250
+					}
+				},
+				{
+					"method": "filter",
+					"options": {
+						"sepia": 70,
+						"hue": 20
 					}
 				}
 			],
+			"url": "6px",
 			"type": "image/png",
-			"ref": [
-				"main"
-			],
-			"tag": "6e86e93b7c0f",
-			"url": "s3://key:secret@bucket/path"
+			"ref": {
+				"bus": false
+			}
 		}
 	],
-	"status": "complete",
-	"callback": {
-	    "url": "http://example.com/callback"
+	"input": {
+		"bus": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52d5c05422a47_1.JPG"
 	},
-	"data": {}
+	"status": "complete"
 }
 ```
 
 The output from a job contains all of the fields that were specified in the input, along with general database values and useful metrics.
 
 #### PROCESSED `object`
-Contains processing information obtained while processing the image.
+Contains various information obtained while processing the image(s).
 
 ##### DURATION `object`
 Benchmarks for various tasks for the job.
@@ -605,8 +615,11 @@ Benchmarks for various tasks for the job.
 | `upload`     | Number   | The total time in milliseconds taken to upload all of the outputs in your job.   																		                                                                                                |
 | `download`   | Number   | The total time in milliseconds taken to download all of the images referenced in the inputs array. 																																					  |                			       																													|
 
+##### OUTPUT `object`
+Outlines various useful data for each of the outputs.
+
 ##### BYTES `number`
-Size of processed data in bytes. If you are submitting a batch job, this number will be the sum of all processed images.
+Size of processed data in bytes. If you are submitting a batch job, this number will be the sum of all processed bytes.
 
 #### STATUS `string`
 Will be one of the following:
