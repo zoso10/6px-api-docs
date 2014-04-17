@@ -118,7 +118,6 @@ The search functionality is optimized to help you find jobs using query paramete
 
 **For example:**
 * Image(s) within a specific area
-* Image(s) with a specific tag
 * Image(s) with specific methods
 
 ### NUMBER
@@ -265,15 +264,15 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?processed.images.latlon={near}4
 | `invert`       | Number  | False    | Expects `true` or `false`. For best results, omit `invert` alltogether if you do not want the filter.  			|
 | `brightness`   | Number  | False    | Default value is `0`. If you want to white-wash the image, pass `100` as the value.  Blaken the image by passing `-100` |
 | `contrast`     | Number  | False    | Default value is `0`. If you want to double the contrast, pass `100` as the value.|
-| `exposure` | Number | False | Adjust the exposure amount in the image.  `-100` to `100` are accepted values.  Defaults to `0`. |
-| `noise` | Number | False | Add noise to an image.  Defaults to `0` (no noise).  Maxes out at `100` (a whole lot of noise). |
-| `saturation` | Number | False | Range of `-100` to `100` (defaults at `0`).|
-| `vibrance` | Number | False | Boosts colors if passed a value above `0`.  Will make colors more dull if passed in a value below `0`. |
-| `hue` | Number | False | Range of `0` to `100`|
-| `gamma` | Number | False | Range of `0` to `100` |
-| `colorize` | String | False | Recolor an image with the passed in hex value.  Make the image blue, just pass in `#0000FF`. |
+| `exposure`     | Number | False | Adjust the exposure amount in the image.  `-100` to `100` are accepted values.  Defaults to `0`. |
+| `noise`        | Number | False | Add noise to an image.  Defaults to `0` (no noise).  Maxes out at `100` (a whole lot of noise). |
+| `saturation`   | Number | False | Range of `-100` to `100` (defaults at `0`).|
+| `vibrance`     | Number | False | Boosts colors if passed a value above `0`.  Will make colors more dull if passed in a value below `0`. |
+| `hue`          | Number | False | Range of `0` to `100`|
+| `gamma`        | Number | False | Range of `0` to `100` |
+| `colorize`     | String | False | Recolor an image with the passed in hex value.  Make the image blue, just pass in `#0000FF`. |
 | `channels`     | Object | False | Pass in an object with at least one channel that you want to modify. `red`, `blue`, and `green` are your options and their default values are `0`.  To cancel a channel out, pass `-100` as the value.
-| `sharpen`    | Number  | False    | Default value is `100`. If you want to double the sharpness, send the value `200`.|
+| `sharpen`      | Number  | False    | Default value is `100`. If you want to double the sharpness, send the value `200`.|
 | `stackBlur`    | Number  | False    | Pass in the  blue radius. `0` - `100` are accepted values. |
 
 Undocumented: `curves`
@@ -469,7 +468,6 @@ Specifies operations that are to be run against the images in the `input` array.
 			"ref": {
 				"main": false
 			},
-			"tag": "6e86e93b7c0f",
 			"url": "s3://key:secret@bucket/path"
 		},
 		{
