@@ -30,6 +30,7 @@ To give you an idea of how to use the API, we have annotated our documentation w
     * [Crop](#crop)
     * [Filter](#filter)
     * [Layer](#layer)
+	* [Analyze](#analyze)
 * [Input JSON](#input-json)
 * [Output JSON](#output-json)
 * [Endpoints](#endpoints)
