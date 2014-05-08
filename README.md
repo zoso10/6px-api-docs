@@ -24,6 +24,7 @@ To give you an idea of how to use the API, we have annotated our documentation w
 	* [Number](#number)
 	* [String](#string)
 	* [Location](#location)
+	* [Dates](#dates)
 * [Methods](#methods)
     * [Rotate](#rotate)
     * [Resize](#resize)
@@ -159,6 +160,19 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?status=processing
 **Example:**
 ```bash
 $ curl https://api.6px.io/v1/users/:user_id/jobs?processed.images.latlon={near}40.0176,-105.2797,10
+```
+
+### DATES
+
+- `date={gt}1999-12-12T13:33:00.000Z` > 1999-12-12T13:33:00.000Z
+- `date={gte}1999-12-12T13:33:00.000Z` >= 1999-12-12T13:33:00.000Z
+- `date={lt}1999-12-12T13:33:00.000Z` < 1999-12-12T13:33:00.000Z
+- `date={lte}1999-12-12T13:33:00.000Z` <= 1999-12-12T13:33:00.000Z
+- `date={gt}1999-12-12T13:33:00.000Z{lt}2014-01-01T01:01:01.000Z` between 1999-12-12T13:33:00.000Z and 2014-01-01T01:01:01.000Z
+
+**Example:**
+```bash
+$ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:00.000Z
 ```
 
 ## METHODS
@@ -681,7 +695,7 @@ $ curl -X POST -H "Content-Type: application/json" -d '{"output":[{"methods":[{"
 **Example Response:**
 ```json
 {
-    "_id": "52e1f64007438cb08073d5e8"
+    "id": "52e1f64007438cb08073d5e8"
 }
 ```
 
