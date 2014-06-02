@@ -913,10 +913,6 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
 ]
 ```
 
-## WEB SOCKETS
-
-The 6px API has full support for web sockets, allowing client and server side SDKs to receive realtime notifications. A notification is currently sent when a job status changes to `processing`, `complete` or `failed`. The payload includes the job id. More documentation to come.
-
 ## SDKs
 
 * [Javascript](https://github.com/6px-io/6px-js-sdk)
