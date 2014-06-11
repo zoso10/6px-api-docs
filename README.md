@@ -365,7 +365,7 @@ Undocumented: `curves`
 
 | Options        | Required | Description                                                          									            	                                   |
 |----------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `exif`         | False    | The `x` position for the layered image.  																	                                               |
+| `exif`         | False    | Returns the EXIF data associated with an image.  																	                                               |
 | `color`        | False    | Analyzing the color returns the `pallete` or `dominant` colors in the image. This is specified via the `context` parameter. The default context is palette. |  																	   |
 | `nudity`       | False    | This is an experimental analysis feature. It's accuracy is approximately 60%.      																		 |
 
