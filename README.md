@@ -589,6 +589,11 @@ A full URL without the filename to which the output image(s) will be uploaded. I
 >
 > If the URL contains authentication with special characters, make sure that they are [properly escaped](http://en.wikipedia.org/wiki/Percent-encoding). We try to write from the root of your server, so use an absolute path for your URL to ensure that we can write to your server successfully.
 
+> **Masked Connection Strings**
+>
+> If you're using a client side implementation or simply prefer to not expose your connection string, you can use a masked connection string. Every user document contains a `connection_string` object. This allows you to map a simple string (e.g. `prod`) to your connection string (e.g. `s3://key:secret@bucket/path`). Your masked connection strings can be specified in the dashboard.
+
+
 ## OUTPUT JSON
 
 ### SAMPLE
