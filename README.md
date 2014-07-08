@@ -918,9 +918,12 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
 ]
 ```
 
-## SDKs
+## Client Libraries
 
-* [Javascript](https://github.com/6px-io/6px-js-sdk)
+* [Javascript](https://github.com/6px-io/6px-js)
+* [Node.js](https://github.com/6px-io/6px-node)
+* [PHP](https://github.com/6px-io/6px-php)
+* [Python](https://github.com/6px-io/6px-python)
 
 ## HELP US HELP YOU
 
