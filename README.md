@@ -9,7 +9,7 @@ The 6px API is built on HTTP. Our API is [RESTful](http://en.wikipedia.org/wiki/
 * Responds with standard HTTP response codes to indicate errors
 * Sends and receives data as [JSON](http://en.wikipedia.org/wiki/JSON)
 
-6px has published [SDKs](#sdks) for various languages.
+6px has published [Client Libraries](#client-libraries) for various languages.
 
 To give you an idea of how to use the API, we have annotated our documentation with code samples written in curl.
 
@@ -924,7 +924,8 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
 * [Node.js](https://github.com/6px-io/6px-node)
 * [PHP](https://github.com/6px-io/6px-php)
 * [Python](https://github.com/6px-io/6px-python)
+* [Ruby](https://github.com/6px-io/6px-ruby)
 
 ## HELP US HELP YOU
 
-Please let us how we can make this API better. If you have a specific feature request or found a bug, please drop us a line at ops@6px.io.
+Please let us how we can make this API better. If you have a specific feature request or found a bug, please create a GitHub issue.
