@@ -179,9 +179,10 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 
 ### ROTATE
 
-| Options | Type      | Required | Description                                                           |
-|---------|-----------|----------|-----------------------------------------------------------------------|
-| `degrees` | Number  | True     | -                                                                     |
+| Options      | Type    | Required | Description                                                        |
+|--------------|---------|----------|--------------------------------------------------------------------|
+| `degrees`    | Number  | True     | -                                                                  |
+| `background` | String  | False    | The background color to fill.  Any hex or `transparent` works.     |
 
 **Example:**
 ```json
@@ -192,6 +193,8 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 	}
 }
 ```
+
+> The image rotates around the center point.
 
 ### RESIZE
 
