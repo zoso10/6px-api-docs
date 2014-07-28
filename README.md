@@ -545,15 +545,8 @@ MIME type to save the image as.
 * `image/jpeg`
 * `image/gif`
 
-##### TAGS `string`
-A `string` that allows you to name an output so that you can reference a specific image down the road.
-
-**Example:**
-```json	
-{
-	"tag": "Cropped-Flower"
-}
-```
+##### TAG `string`
+A `string` that allows you to name an output so that you can reference a specific image down the road. Tags are required.
 
 ##### REF `object`
 Specifies which input(s) to use. If we specify more than one ref in this block, it will duplicate whatever is in this block for each of the input indexes defined. If the value is set to false, a random filename will be generated.
@@ -779,6 +772,7 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs/52e1f64007438cb
 			],
 			"url": "6px",
 			"type": "image/png",
+			"tag": "Small-Sepia",
 			"ref": {
 				"bus": false
 			}
@@ -848,6 +842,7 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
 				],
 				"url": "6px",
 				"type": "image/png",
+				"tag": "Small-Sepia",
 				"ref": {
 					"bus": false
 				}
@@ -917,6 +912,7 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
 				],
 				"url": "6px",
 				"type": "image/png",
+				"tag": "Small-Sepia",
 				"ref": {
 					"bus": false,
 					"forest": false,
