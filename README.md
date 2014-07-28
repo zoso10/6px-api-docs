@@ -38,7 +38,6 @@ To give you an idea of how to use the API, we have annotated our documentation w
 	* [Create](#create)
 	* [Get](#get)
 	* [List](#list)
-* [Web Sockets](#sockets)
 * [SDKs](#sdks)
 
 ## BASE URL
