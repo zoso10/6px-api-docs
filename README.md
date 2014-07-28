@@ -59,6 +59,7 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?key=YOUR_KEY&secret=YOUR_SECRET
 
 > **Authentication using an API secret should only be used in server to server scenarios. If you're making a request via from a browser via AJAX, please omit the secret and ensure that the requesting domain is whitelisted in the account section of your dashboard.**
 
+
 ## DATE FORMAT
 
 6px returns JSON for all API calls. Dates are passed as an [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) formatted datetime.
@@ -427,6 +428,7 @@ Undocumented: `curves`
 				}
 			],
 			"type": "image/png",
+			"tag": "Resized",
 			"ref": {
 				"img": false
 			},
@@ -435,6 +437,7 @@ Undocumented: `curves`
 	]
 }
 ```
+
 #### DATA `object`
 An `object` that allows you to store custom data such as a database id, name or email.
 
@@ -483,6 +486,7 @@ Specifies operations that are to be run against the images in the `input` array.
 				}
 			],
 			"type": "image/png",
+			"tag": "Resized",
 			"ref": {
 				"main": false
 			},
@@ -493,11 +497,12 @@ Specifies operations that are to be run against the images in the `input` array.
 				{
 					"method": "filter",
 					"options": {
-						"color": 0
+						"colorize": { "hex": "#F00", "strength": 60 } 
 					}
 				}
 			],
 			"type": "image/png",
+			"tag": "Red",
 			"ref": {
 				"main": false
 			},
@@ -540,6 +545,16 @@ MIME type to save the image as.
 * `image/jpeg`
 * `image/gif`
 
+##### TAGS `string`
+A `string` that allows you to name an output so that you can reference a specific image down the road.
+
+**Example:**
+```json	
+{
+	"tag": "Cropped-Flower"
+}
+```
+
 ##### REF `object`
 Specifies which input(s) to use. If we specify more than one ref in this block, it will duplicate whatever is in this block for each of the input indexes defined. If the value is set to false, a random filename will be generated.
 
@@ -569,6 +584,7 @@ Specifies which input(s) to use. If we specify more than one ref in this block, 
 					}
 				}
 			],
+			"tag": "Face",
 			"ref": {
 				"img3": "image.png"
 			}
@@ -646,6 +662,7 @@ A full URL without the filename to which the output image(s) will be uploaded. I
 			],
 			"url": "6px",
 			"type": "image/png",
+			"tag": "Small-Sepia",
 			"ref": {
 				"bus": false
 			}
