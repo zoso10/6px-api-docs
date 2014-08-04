@@ -753,7 +753,7 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs/52e1f64007438cb
 					"width": 250,
 					"height": 166
 				},
-				"location: "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/52e1f64007438cb08073d5e9/bus.png"
+				"location": "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/52e1f64007438cb08073d5e9/bus.png"
 			}
 		},
 		"bytes": 88202
