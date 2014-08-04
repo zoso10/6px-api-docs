@@ -586,7 +586,7 @@ Specifies which input(s) to use. If we specify more than one ref in this block, 
 ```
 
 ##### URL `string`
-A full URL without the filename to which the output image(s) will be uploaded. If an output URL is not specified, your image(s) will automatically be uploaded and served from the 6px CDN.
+A full URL without the filename to which the output image(s) will be uploaded.
 
 **The following output locations / connection strings are supported:**
 
@@ -603,6 +603,10 @@ A full URL without the filename to which the output image(s) will be uploaded. I
 > **Masked Connection Strings**
 >
 > If you're using a client side implementation or simply prefer to not expose your connection string, you can use a masked connection string. Every user document contains a `connection_string` object. This allows you to map a simple string (e.g. `prod`) to your connection string (e.g. `s3://key:secret@bucket/path`). Your masked connection strings can be specified in the dashboard.
+
+> ** Default Hosting **
+>
+> If you would like to default your hosting to our Amazon S3 account, simply pass in `6px` as a masked connection string. > The output will contain an absolute URL in the form of `http://cdn-6px.s3.amazonaws.com/:user_id/:job_id/:filename`.
 
 
 ## OUTPUT JSON
@@ -630,7 +634,8 @@ A full URL without the filename to which the output image(s) will be uploaded. I
 					"bytes": 88202,
 					"width": 250,
 					"height": 166
-				}
+				},
+				"location: "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/52e1f64007438cb08073d5e9/bus.png"
 			}
 		},
 		"bytes": 88202
@@ -747,7 +752,8 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs/52e1f64007438cb
 					"bytes": 88202,
 					"width": 250,
 					"height": 166
-				}
+				},
+				"location: "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/52e1f64007438cb08073d5e9/bus.png"
 			}
 		},
 		"bytes": 88202
@@ -817,7 +823,8 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
 						"bytes": 88202,
 						"width": 250,
 						"height": 166
-					}
+					},
+					"location: "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/52e1f64007438cb08073d5e9/bus.png"
 				}
 			},
 			"bytes": 88202
@@ -873,21 +880,24 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
 						"bytes": 16033211,
 						"width": 4608,
 						"height": 3456
-					}
+					},
+					"location: "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/534ef43674b502000000edd4/location.png"
 				},
 				"forest": {
 					"info": {
 						"bytes": 6814070,
 						"width": 2300,
 						"height": 1533
-					}
+					},
+					"location: "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/534ef43674b502000000edd4/forest.png"
 				},
 				"bus": {
 					"info": {
 						"bytes": 88202,
 						"width": 250,
 						"height": 166
-					}
+					},
+					"location: "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/534ef43674b502000000edd4/bus.png"
 				}
 			},
 			"bytes": 22935483
