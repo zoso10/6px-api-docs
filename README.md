@@ -729,7 +729,7 @@ Will be one of the following:
 
 **Example Request:**
 ```bash
-$ curl -X POST -H "Content-Type: application/json" -d '{"output":[{"methods":[{"method": "resize","options":{"width":200,"height":200}}],"type":"image/png","ref":["main"]}],"input":{"hobbit":"http://0.tqn.com/d/scifi/1/0/n/1/1/-/HBT-008104r.jpg"}}' https://api.6px.io/v1/users/:user_id/jobs
+$ curl -X POST -H "Content-Type: application/json" -d '{"output":[{"methods":[{"method": "resize","options":{"width":200,"height":200}}],"type":"image/png","tag":"hobbit","ref":{"hobbit":"the_filename_you_want_and_dont_include_the_extension"}}],"input":{"hobbit":"http://0.tqn.com/d/scifi/1/0/n/1/1/-/HBT-008104r.jpg"}}' https://api.6px.io/v1/users/:user_id/jobs
 ```
 
 **Example Response:**
