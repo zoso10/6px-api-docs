@@ -885,40 +885,42 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
 		"modified": "2014-04-16T21:21:36.544Z",
 		"created": "2014-04-16T21:20:54.403Z",
 		"processed": {
-			"duration": {
-				"start": "2014-04-16T21:20:54.474Z",
-				"upload": 19842,
-				"download": 8424,
-				"total": 41999,
-				"end": "2014-04-16T21:21:36.473Z"
-			},
-			"output": {
-				"farm": {
-					"info": {
-						"bytes": 16033211,
-						"width": 4608,
-						"height": 3456
-					},
-					"location": "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/534ef43674b502000000edd4/location.png"
+			"Small-Sepia": {
+				"duration": {
+					"start": "2014-04-16T21:20:54.474Z",
+					"upload": 19842,
+					"download": 8424,
+					"total": 41999,
+					"end": "2014-04-16T21:21:36.473Z"
 				},
-				"forest": {
-					"info": {
-						"bytes": 6814070,
-						"width": 2300,
-						"height": 1533
+				"output": {
+					"farm": {
+						"info": {
+							"bytes": 16033211,
+							"width": 4608,
+							"height": 3456
+						},
+						"location": "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/534ef43674b502000000edd4/location.png"
 					},
-					"location": "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/534ef43674b502000000edd4/forest.png"
+					"forest": {
+						"info": {
+							"bytes": 6814070,
+							"width": 2300,
+							"height": 1533
+						},
+						"location": "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/534ef43674b502000000edd4/forest.png"
+					},
+					"bus": {
+						"info": {
+							"bytes": 88202,
+							"width": 250,
+							"height": 166
+						},
+						"location": "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/534ef43674b502000000edd4/bus.png"
+					}
 				},
-				"bus": {
-					"info": {
-						"bytes": 88202,
-						"width": 250,
-						"height": 166
-					},
-					"location": "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/534ef43674b502000000edd4/bus.png"
-				}
-			},
-			"bytes": 22935483
+				"bytes": 22935483
+			}
 		},
 		"output": [
 			{
