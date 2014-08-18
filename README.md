@@ -663,8 +663,6 @@ A full URL without the filename to which the output image(s) will be uploaded.
     "processed": [
         {
 			"_id": "53f257b72eeb9052131df057",
-            "job_id": "53efc1e0e87c380644443106",
-            "user_id": "53efc1e0e87c380644443106",
             "created": "2014-08-16T20:41:04.706Z",
             "modified": "2014-08-16T20:41:06.343Z",
             "name": "taxi",
@@ -795,8 +793,6 @@ $ curl https://api.6px.io/v1/users/535702ffed81710200aa471d/jobs/53efc1e0e87c380
 	"processed": [
 		{
 			"_id": "53f257b72eeb9052131df057",
-			"job_id": "53efc1e0e87c380644443106",
-			"user_id": "535702ffed81710200aa471d",
 			"created": "2014-08-16T20:41:04.706Z",
 			"modified": "2014-08-16T20:41:06.343Z",
 			"name": "raw",
@@ -880,8 +876,6 @@ $ curl https://api.6px.io/v1/users/535702ffed81710200aa471d/jobs
 		"processed": [
 			{
 				"_id": "53efc1e0e87c380644443106",
-				"job_id": "53efc1e0e87c380644443106",
-				"user_id": "535702ffed81710200aa471d",
 				"created": "2014-08-16T20:41:04.706Z",
 				"modified": "2014-08-16T20:41:06.343Z",
 				"name": "raw",
@@ -951,8 +945,6 @@ $ curl https://api.6px.io/v1/users/535702ffed81710200aa471d/jobs
 		"processed": [
 			{
 				"_id": "53f257b72eeb9052131df057",
-				"job_id": "53efc1e0e87c380644443107",
-				"user_id": "535702ffed81710200aa471d",
 				"created": "2014-08-16T20:41:04.706Z",
 				"modified": "2014-08-16T20:41:06.343Z",
 				"name": "raw",
