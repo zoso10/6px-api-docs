@@ -20,7 +20,7 @@ To give you an idea of how to use the API, we have annotated our documentation w
 * [Limits](#limits)
 * [Pagination](#pagination)
 * [Sorting](#sorting)
-* [Search](#search)
+* [Search](##search-experimental)
 	* [Number](#number)
 	* [String](#string)
 	* [Location](#location)
@@ -74,7 +74,7 @@ When you sign up for an account, you are given an API key and secret. You authen
 $ curl https://api.6px.io/v1/users/:user_id/jobs?key=YOUR_KEY&secret=YOUR_SECRET
 ```
 
-> **Authentication using an API secret should only be used in server to server scenarios. If you're making a request via from a browser via AJAX, please omit the secret and ensure that the requesting domain is whitelisted in the account section of your dashboard.**
+> **Note**: Authentication using an API secret should only be used in server to server scenarios. If you're making a request via from a browser via AJAX, please omit the secret and ensure that the requesting domain is whitelisted in the account section of your dashboard.
 
 
 ## DATE FORMAT
@@ -499,7 +499,7 @@ An `object` that allows you to store custom data such as a database id, name or 
 }
 ```
 
-You can then easily locate jobs using with a simple [search](#search):
+You can then easily locate jobs using a simple [search](#search-experimental):
 ```bash
 $ curl https://api.6px.io/v1/users/:user_id/jobs?data.id=1234
 ```
