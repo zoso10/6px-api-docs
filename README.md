@@ -510,11 +510,12 @@ When your job is complete a `POST` will be sent to an optional callback URL. The
 #### INPUT `array`
 The `input` array specifies the images that are to be used when processing the job. Input should be a publicly accessable URL or a valid [data URI](https://developer.mozilla.org/en-US/docs/data_URIs).
 
-**The following image formats are supported:**
+**The following formats are supported:**
 
-* `JPG`
+* `JPEG`
 * `PNG`
 * `GIF`
+* `SVG`
 
 #### OUTPUT `array`
 Specifies operations that are to be run against the images in the `input` array. Multiple outputs can be achieved by providing additional objects.
