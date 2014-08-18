@@ -33,7 +33,7 @@ To give you an idea of how to use the API, we have annotated our documentation w
     * [Layer](#layer)
 	* [Analyze](#analyze)
 * [Input JSON](#input-json)
-	* [Input](#input-array) 
+	* [Input](#input-array)
 	* [Output](#data-object)
 		* [Methods](#methods-array)
 		* [Type](#type-string)
@@ -42,7 +42,7 @@ To give you an idea of how to use the API, we have annotated our documentation w
 		* [URL](#url-string)
 	* [Callback](##callback-object)
 * [Output JSON](#output-json)
-	* [Processed](#processed-object)
+	* [Processed](#processed-array)
 		* [Duration](#duration-object)
 		* [Output](#output-object)
 		* [Bytes](#bytes-number)
@@ -514,7 +514,7 @@ Specifies operations that are to be run against the images in the `input` array.
 				{
 					"method": "filter",
 					"options": {
-						"colorize": { "hex": "#F00", "strength": 60 } 
+						"colorize": { "hex": "#F00", "strength": 60 }
 					}
 				}
 			],
@@ -624,7 +624,7 @@ A full URL without the filename to which the output image(s) will be uploaded.
 
 > ** Default Hosting **
 >
-> If you would like to default your hosting to our Amazon S3 account, simply pass in `6px` as a masked connection string. > The output will contain an absolute URL in the form of `http://cdn-6px.s3.amazonaws.com/:user_id/:job_id/:filename`.
+> If you would like to default your hosting to our Amazon S3 account, simply pass in `6px` as a masked connection string. The output will contain an absolute URL in the form of `http://cdn-6px.s3.amazonaws.com/:user_id/:job_id/:filename`.
 
 
 ## OUTPUT JSON
@@ -634,66 +634,74 @@ A full URL without the filename to which the output image(s) will be uploaded.
 ```json
 {
 	"__v": 0,
-	"_id": "52e1f64007438cb08073d5e9",
-	"user_id": "52c747dc04f452f766000001",
-	"modified": "2014-04-16T21:21:36.544Z",
-	"created": "2014-04-16T21:20:54.403Z",
-	"processed": {
-		"duration": {
-			"start": "2014-04-16T21:20:54.474Z",
-			"upload": 19842,
-			"download": 8424,
-			"total": 41999,
-			"end": "2014-04-16T21:21:36.473Z"
-		},
-		"output": {
-			"bus": {
-				"info": {
-					"bytes": 88202,
-					"width": 250,
-					"height": 166
-				},
-				"location": "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/52e1f64007438cb08073d5e9/bus.png"
-			}
-		},
-		"bytes": 88202
+    "_id": "53efc1e0e87c380644443106",
+    "user_id": "535702ffed81710200aa471d",
+    "modified": "2014-08-16T20:41:06.343Z",
+    "created": "2014-08-16T20:41:04.706Z",
+    "input": {
+		"taxi": "https://s3.amazonaws.com/ooomf-com-files/mtNrf7oxS4uSxTzMBWfQ_DSC_0043.jpg"
 	},
 	"output": [
-		{
-			"methods": [
-				{
-					"method": "resize",
-					"options": {
-						"width": 250
-					}
-				},
-				{
-					"method": "filter",
-					"options": {
-						"sepia": 70,
-						"hue": 20
-					}
-				}
-			],
-			"url": "6px",
-			"type": "image/png",
-			"tag": "Small-Sepia",
-			"ref": {
-				"bus": false
-			}
-		}
-	],
-	"input": {
-		"bus": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52d5c05422a47_1.JPG"
-	},
+        {
+            "ref": {
+                "taxi": "unsplashed_taxi"
+            },
+            "type": "image/png",
+            "tag": "raw",
+            "methods": [
+                {
+                    "options": {
+                        "width": 400,
+                        "height": 400
+                    },
+                    "method": "resize"
+                }
+            ],
+            "url": "6px"
+        }
+    ],
+    "processed": [
+        {
+			"_id": "53f257b72eeb9052131df057",
+            "job_id": "53efc1e0e87c380644443106",
+            "user_id": "53efc1e0e87c380644443106",
+            "created": "2014-08-16T20:41:04.706Z",
+            "modified": "2014-08-16T20:41:06.343Z",
+            "name": "taxi",
+            "status": "complete",
+            "data": {
+                "bytes": 322345,
+                "output": {
+                    "taxi": {
+                        "info": {
+                            "height": 400,
+                            "width": 400,
+                            "bytes": 322345
+                        },
+                        "location": "http://cdn-6px.s3.amazonaws.com/53efc1e0e87c380644443106/53efc1e0e87c380644443106/taxi.png"
+                    }
+                },
+                "duration": {
+                    "end": "2014-08-16T20:41:06.134Z",
+                    "total": 1323,
+                    "download": 436,
+                    "upload": 107,
+                    "start": "2014-08-16T20:41:04.811Z"
+                }
+            }
+        }
+    ],
 	"status": "complete",
-	"data": {}
+	"callback": {
+		"url": "http://5c68ac8.ngrok.com"
+	},
+	"data": {},
 }
 ```
 
 The output from a job contains all of the fields that were specified in the input, along with general database values and useful metrics.
 
-#### PROCESSED `object`
+#### PROCESSED `array`
 Contains various information obtained while processing the image(s).
 
 ##### DURATION `object`
@@ -745,67 +753,81 @@ $ curl -X POST -H "Content-Type: application/json" -d '{"output":[{"methods":[{"
 
 **Example Request:**
 ```bash
-$ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs/52e1f64007438cb08073d5e8
+$ curl https://api.6px.io/v1/users/535702ffed81710200aa471d/jobs/53efc1e0e87c380644443106
 ```
 
 **Example Response:**
 ```json
 {
 	"__v": 0,
-	"_id": "52e1f64007438cb08073d5e9",
-	"user_id": "52c747dc04f452f766000001",
-	"modified": "2014-04-16T21:21:36.544Z",
-	"created": "2014-04-16T21:20:54.403Z",
-	"processed": {
-		"duration": {
-			"start": "2014-04-16T21:20:54.474Z",
-			"upload": 19842,
-			"download": 8424,
-			"total": 41999,
-			"end": "2014-04-16T21:21:36.473Z"
-		},
-		"output": {
-			"bus": {
-				"info": {
-					"bytes": 88202,
-					"width": 250,
-					"height": 166
-				},
-				"location": "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/52e1f64007438cb08073d5e9/bus.png"
-			}
-		},
-		"bytes": 88202
+	"_id": "53efc1e0e87c380644443106",
+	"user_id": "535702ffed81710200aa471d",
+	"modified": "2014-08-16T20:41:06.343Z",
+	"created": "2014-08-16T20:41:04.706Z",
+	"input": {
+		"taxi": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52d5c05422a47_1.JPG"
 	},
 	"output": [
 		{
+			"ref": {
+				"taxi": "unsplashed_taxi"
+			},
+			"type": "image/png",
+			"tag": "small-sepia",
 			"methods": [
 				{
-					"method": "resize",
 					"options": {
 						"width": 250
-					}
+					},
+					"method": "resize"
 				},
 				{
-					"method": "filter",
 					"options": {
-						"sepia": 70,
+						"sepia": 80,
 						"hue": 20
-					}
+					},
+					"method": "filter"
 				}
 			],
-			"url": "6px",
-			"type": "image/png",
-			"tag": "Small-Sepia",
-			"ref": {
-				"bus": false
+			"url": "6px"
+		}
+	],
+	"processed": [
+		{
+			"_id": "53f257b72eeb9052131df057",
+			"job_id": "53efc1e0e87c380644443106",
+			"user_id": "535702ffed81710200aa471d",
+			"created": "2014-08-16T20:41:04.706Z",
+			"modified": "2014-08-16T20:41:06.343Z",
+			"name": "raw",
+			"status": "complete",
+			"data": {
+				"bytes": 322345,
+				"output": {
+					"taxi": {
+						"info": {
+							"height": 400,
+							"width": 400,
+							"bytes": 322345
+						},
+						"location": "http://cdn-6px.s3.amazonaws.com/535702ffed81710200aa471d/53efc1e0e87c380644443106/taxi.png"
+					}
+				},
+				"duration": {
+					"end": "2014-08-16T20:41:06.134Z",
+					"total": 1323,
+					"download": 436,
+					"upload": 107,
+					"start": "2014-08-16T20:41:04.811Z"
+				}
 			}
 		}
 	],
-	"input": {
-		"bus": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52d5c05422a47_1.JPG"
-	},
 	"status": "complete",
-	"data": {}
+	"callback": {
+		"url": "http://5c68ac8.ngrok.com"
+	},
+	"data": {},
 }
 ```
 
@@ -815,7 +837,7 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs/52e1f64007438cb
 
 **Example Request:**
 ```bash
-$ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
+$ curl https://api.6px.io/v1/users/535702ffed81710200aa471d/jobs
 ```
 
 **Example Response:**
@@ -823,142 +845,145 @@ $ curl https://api.6px.io/v1/users/52c747dc04f452f766000001/jobs
 [
 	{
 		"__v": 0,
-		"_id": "52e1f64007438cb08073d5e9",
-		"user_id": "52c747dc04f452f766000001",
-		"modified": "2014-04-16T21:21:36.544Z",
-		"created": "2014-04-16T21:20:54.403Z",
-		"processed": {
-			"duration": {
-				"start": "2014-04-16T21:20:54.474Z",
-				"upload": 19842,
-				"download": 8424,
-				"total": 41999,
-				"end": "2014-04-16T21:21:36.473Z"
-			},
-			"output": {
-				"bus": {
-					"info": {
-						"bytes": 88202,
-						"width": 250,
-						"height": 166
-					},
-					"location": "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/52e1f64007438cb08073d5e9/bus.png"
-				}
-			},
-			"bytes": 88202
+		"_id": "53efc1e0e87c380644443106",
+		"user_id": "535702ffed81710200aa471d",
+		"modified": "2014-08-16T20:41:06.343Z",
+		"created": "2014-08-16T20:41:04.706Z",
+		"input": {
+			"taxi": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52d5c05422a47_1.JPG"
 		},
 		"output": [
 			{
+				"ref": {
+					"taxi": "unsplashed_taxi"
+				},
+				"type": "image/png",
+				"tag": "small-sepia",
 				"methods": [
 					{
-						"method": "resize",
 						"options": {
 							"width": 250
-						}
+						},
+						"method": "resize"
 					},
 					{
-						"method": "filter",
 						"options": {
-							"sepia": 70,
+							"sepia": 80,
 							"hue": 20
-						}
+						},
+						"method": "filter"
 					}
 				],
-				"url": "6px",
-				"type": "image/png",
-				"tag": "Small-Sepia",
-				"ref": {
-					"bus": false
+				"url": "6px"
+			}
+		],
+		"processed": [
+			{
+				"_id": "53efc1e0e87c380644443106",
+				"job_id": "53efc1e0e87c380644443106",
+				"user_id": "535702ffed81710200aa471d",
+				"created": "2014-08-16T20:41:04.706Z",
+				"modified": "2014-08-16T20:41:06.343Z",
+				"name": "raw",
+				"status": "complete",
+				"data": {
+					"bytes": 322345,
+					"output": {
+						"taxi": {
+							"info": {
+								"height": 400,
+								"width": 400,
+								"bytes": 322345
+							},
+							"location": "http://cdn-6px.s3.amazonaws.com/535702ffed81710200aa471d/53efc1e0e87c380644443106/taxi.png"
+						}
+					},
+					"duration": {
+						"end": "2014-08-16T20:41:06.134Z",
+						"total": 1323,
+						"download": 436,
+						"upload": 107,
+						"start": "2014-08-16T20:41:04.811Z"
+					}
 				}
 			}
 		],
-		"input": {
-			"bus": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52d5c05422a47_1.JPG"
-		},
 		"status": "complete",
-		"data": {}
+		"callback": {
+			"url": "http://5c68ac8.ngrok.com"
+		},
+		"data": {},
 	},
 	{
 		"__v": 0,
-		"_id": "534ef43674b502000000edd4",
-		"user_id": "5344f3842b89de102752424b",
-		"modified": "2014-04-16T21:21:36.544Z",
-		"created": "2014-04-16T21:20:54.403Z",
-		"processed": {
-			"Small-Sepia": {
-				"duration": {
-					"start": "2014-04-16T21:20:54.474Z",
-					"upload": 19842,
-					"download": 8424,
-					"total": 41999,
-					"end": "2014-04-16T21:21:36.473Z"
-				},
-				"output": {
-					"farm": {
-						"info": {
-							"bytes": 16033211,
-							"width": 4608,
-							"height": 3456
-						},
-						"location": "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/534ef43674b502000000edd4/location.png"
-					},
-					"forest": {
-						"info": {
-							"bytes": 6814070,
-							"width": 2300,
-							"height": 1533
-						},
-						"location": "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/534ef43674b502000000edd4/forest.png"
-					},
-					"bus": {
-						"info": {
-							"bytes": 88202,
-							"width": 250,
-							"height": 166
-						},
-						"location": "http://cdn-6px.s3.amazonaws.com/52c747dc04f452f766000001/534ef43674b502000000edd4/bus.png"
-					}
-				},
-				"bytes": 22935483
-			}
+		"_id": "53efc1e0e87c380644443107",
+		"user_id": "535702ffed81710200aa471d",
+		"modified": "2014-08-16T20:41:06.343Z",
+		"created": "2014-08-16T20:41:04.706Z",
+		"input": {
+			"taxi": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52d5c05422a47_1.JPG"
 		},
 		"output": [
 			{
+				"ref": {
+					"taxi": "unsplashed_taxi"
+				},
+				"type": "image/png",
+				"tag": "small-sepia",
 				"methods": [
 					{
-						"method": "resize",
 						"options": {
 							"width": 250
-						}
+						},
+						"method": "resize"
 					},
 					{
-						"method": "filter",
 						"options": {
-							"sepia": 70,
+							"sepia": 80,
 							"hue": 20
-						}
+						},
+						"method": "filter"
 					}
 				],
-				"url": "6px",
-				"type": "image/png",
-				"tag": "Small-Sepia",
-				"ref": {
-					"bus": false,
-					"forest": false,
-					"farm": false
+				"url": "6px"
+			}
+		],
+		"processed": [
+			{
+				"_id": "53f257b72eeb9052131df057",
+				"job_id": "53efc1e0e87c380644443107",
+				"user_id": "535702ffed81710200aa471d",
+				"created": "2014-08-16T20:41:04.706Z",
+				"modified": "2014-08-16T20:41:06.343Z",
+				"name": "raw",
+				"status": "complete",
+				"data": {
+					"bytes": 322345,
+					"output": {
+						"taxi": {
+							"info": {
+								"height": 400,
+								"width": 400,
+								"bytes": 322345
+							},
+							"location": "http://cdn-6px.s3.amazonaws.com/535702ffed81710200aa471d/53efc1e0e87c380644443107/taxi.png"
+						}
+					},
+					"duration": {
+						"end": "2014-08-16T20:41:06.134Z",
+						"total": 1323,
+						"download": 436,
+						"upload": 107,
+						"start": "2014-08-16T20:41:04.811Z"
+					}
 				}
 			}
 		],
-		"input": {
-			"bus": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52d5c05422a47_1.JPG",
-			"forest": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52dbe5607f0db_1.JPG",
-			"farm": "http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52d7cdd15b9a3_1.JPG"
-		},
 		"status": "complete",
 		"callback": {
-			"url": ""
+			"url": "http://5c68ac8.ngrok.com"
 		},
-		"data": {}
+		"data": {},
 	}
 ]
 ```
