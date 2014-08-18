@@ -212,7 +212,7 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 }
 ```
 
-> The image rotates around the center point.
+> **Note**: The image rotates around the center point.
 
 ### RESIZE
 
@@ -242,7 +242,7 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 }
 ```
 
-> **Height and/or width are required parameters. Automatic proprotions provided if either parameter is omitted.**
+> **Note**: Height and/or width are required parameters. Automatic proportions provided if either parameter is omitted.
 
 ### CROP
 
@@ -300,18 +300,16 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 | `invert`       | Number  | False    | Expects `true` or `false`. For best results, omit `invert` alltogether if you do not want the filter.  			|
 | `brightness`   | Number  | False    | Default value is `0`. If you want to white-wash the image, pass `100` as the value.  Blaken the image by passing `-100` |
 | `contrast`     | Number  | False    | Default value is `0`. If you want to double the contrast, pass `100` as the value.|
-| `exposure`     | Number | False | Adjust the exposure amount in the image.  `-100` to `100` are accepted values.  Defaults to `0`. |
-| `noise`        | Number | False | Add noise to an image.  Defaults to `0` (no noise).  Maxes out at `100` (a whole lot of noise). |
-| `saturation`   | Number | False | Range of `-100` to `100` (defaults at `0`).|
-| `vibrance`     | Number | False | Boosts colors if passed a value above `0`.  Will make colors more dull if passed in a value below `0`. |
-| `hue`          | Number | False | Range of `0` to `100`|
-| `gamma`        | Number | False | Range of `0` to `100` |
-| `colorize`     | String | False | Recolor an image with the passed in hex value.  Make the image blue, just pass in `#0000FF`. |
-| `channels`     | Object | False | Pass in an object with at least one channel that you want to modify. `red`, `blue`, and `green` are your options and their default values are `0`.  To cancel a channel out, pass `-100` as the value.
+| `exposure`     | Number  | False    | Adjust the exposure amount in the image.  `-100` to `100` are accepted values.  Defaults to `0`. |
+| `noise`        | Number  | False    | Add noise to an image.  Defaults to `0` (no noise).  Maxes out at `100` (a whole lot of noise). |
+| `saturation`   | Number  | False    | Range of `-100` to `100` (defaults at `0`).|
+| `vibrance`     | Number  | False    | Boosts colors if passed a value above `0`.  Will make colors more dull if passed in a value below `0`. |
+| `hue`          | Number  | False    | Range of `0` to `100`|
+| `gamma`        | Number  | False    | Range of `0` to `100` |
+| `colorize`     | String  | False    | Recolor an image with the passed in hex value.  Make the image blue, just pass in `#0000FF`. |
+| `channels`     | Object  | False    | Pass in an object with at least one channel that you want to modify. `red`, `blue`, and `green` are your options and their default values are `0`.  To cancel a channel out, pass `-100` as the value.
 | `sharpen`      | Number  | False    | Default value is `100`. If you want to double the sharpness, send the value `200`.|
 | `stackBlur`    | Number  | False    | Pass in the  blue radius. `0` - `100` are accepted values. |
-
-Undocumented: `curves`
 
 **Example 1:**
 ```json
@@ -380,15 +378,48 @@ Undocumented: `curves`
 }
 ```
 
-> The `x` and `y` values can be omitted if you want to play your layered image at the top left corner (0,0)
+> **Note**: The `x` and `y` values can be omitted if you want to play your layered image at the top left corner (0,0)
+
+### TILE
+
+| Options        | Type     | Required | Description                                                               |
+|----------------|----------|--------------------------------------------------------------------------------------|
+| `size`         | Number   | False    | Specifies the `height` and `width` of the generated tile. The default size is 256px. |
+| `zoom`         | Number   | False    | Scales the image for a number of zoom levels (max 10 levels). This is done by scaling down the original image size before performing the tile method. The default zoom level is 10 (original size). |
+
+**Example 1:**
+```json
+{
+	"method": "tile",
+	"options": {
+		"size": 100,
+		"zoom": 4
+	}
+}
+```
+
+**Example 2:**
+```json
+{
+	"method": "tile",
+	"options": {
+		"size": 200
+	}
+}
+```
+> **Note**: The tile method generates a large number of images and will take some time. Generated images count towards your output quota.
+>
+> To estimate the number of tiles that will be generated, use the following equation:
+>
+> ![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%28%5Cfrac%7BimageWidth%7D%7B2%5E%7B%2810-zoomLevel%29%7D%7D%29%7D%7BtileSize%7D*%5Cfrac%7B%28%5Cfrac%7BimageHeight%7D%7B2%5E%7B%2810-zoomLevel%29%7D%7D%29%7D%7BtileSize%7D)
 
 ### ANALYZE
 
-| Options        | Required | Description                                                          									            	                                   |
+| Options        | Required | Description                                                          									            	                                      |
 |----------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `exif`         | False    | Returns the EXIF data associated with an image.  																	                                               |
-| `color`        | False    | Analyzing the color returns the `pallete` or `dominant` colors in the image. This is specified via the `context` parameter. The default context is palette. |  																	   |
-| `nudity`       | False    | This is an experimental analysis feature. It's accuracy is approximately 60%.      																		 |
+| `exif`         | False    | Returns the EXIF data associated with an image.  																	                                          |
+| `color`        | False    | Analyzing the color returns the `pallete` or `dominant` colors in the image. This is specified via the `context` parameter. The default context is palette. |
+| `nudity`       | False    | This is an experimental analysis feature. It's accuracy is approximately 60%.      																		  |
 
 **Example 1:**
 ```json
