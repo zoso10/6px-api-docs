@@ -68,7 +68,7 @@ https://api.6px.io/v1/
 
 ## AUTHENTICATION
 
-When you sign up for an account, you are given an API key and secret. You authenticate with the 6px API by providing your API key and secret in every request. You can manage your API key and secret in the `My Account` section of the [dashboard](http://6px.io/login).
+When you sign up for an account, you are given an API key and secret. You authenticate with the 6px API by providing your API key and secret in every request. You can manage your API key and secret in the `Settings` section of the [dashboard](https://6px.io/dashboard/#/settings).
 
 ```bash
 $ curl https://api.6px.io/v1/users/:user_id/jobs?key=YOUR_KEY&secret=YOUR_SECRET
@@ -109,7 +109,7 @@ Requests that return multiple results will be paginated to 10 resources by defau
 $ curl https://api.6px.io/v1/users/:user_id/jobs?page=2
 ```
 
-To increase the number of resources returned, simply pass the `?per_page` parameter.
+To increase the number of resources returned, simply pass the `?per_page` query parameter.
 
 ```bash
 $ curl https://api.6px.io/v1/users/:user_id/jobs?page=2&per_page=100
