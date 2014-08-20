@@ -252,7 +252,6 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 | `width`   | Number  | False    | -                                                                              |
 | `x`       | Number  | False    | -                                                                              |
 | `y`       | Number  | False    | -                                                                              |
-| `face`    | Boolean | False    | Crops to dominant face. Omit `x` and `y` coordinates when using this option.   |
 | `padding` | Number  | False    | Sets specified padding when using `face` parameter.                            |
 
 **Example 1:**
@@ -264,30 +263,6 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 		"width": 200,
 		"x": 150,
 		"y" 300
-	}
-}
-```
-
-**Example 2:**
-```json
-{
-	"method": "crop",
-	"options": {
-		"height": 100,
-		"face": true
-	}
-}
-```
-
-**Example 3:**
-```json
-{
-	"method": "crop",
-	"options": {
-		"height": 100,
-		"width": 100,
-		"face": true,
-		"padding" 20
 	}
 }
 ```
@@ -419,7 +394,6 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 |----------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `exif`         | False    | Returns the EXIF data associated with an image.  																	                                          |
 | `color`        | False    | Analyzing the color returns the `pallete` or `dominant` colors in the image. This is specified via the `context` parameter. The default context is palette. |
-| `nudity`       | False    | This is an experimental analysis feature. It's accuracy is approximately 60%.      																		  |
 
 **Example 1:**
 ```json
@@ -438,15 +412,6 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 	"options": {
 		"type": "color",
 		"context": "palette"
-	}
-}
-```
-**Example 3:**
-```json
-{
-	"method": "analyze",
-	"options": {
-		"type": "nudity"
 	}
 }
 ```
