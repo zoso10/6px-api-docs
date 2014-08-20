@@ -297,7 +297,7 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 | Options        | Type    | Required | Description                                                          											|
 |----------------|---------|----------|-----------------------------------------------------------------------------------------------------------------|
 | `sepia`        | Number  | False    | Expects a number between `0` to `100`.  The higher the number, the more sepia that is applied.   											|
-| `invert`       | Number  | False    | Expects `true` or `false`. For best results, omit `invert` alltogether if you do not want the filter.  			|
+| `invert`       | Number  | False    | Expects `true` or `false`. For best results, omit `invert` altogether if you do not want the filter.  			|
 | `brightness`   | Number  | False    | Default value is `0`. If you want to white-wash the image, pass `100` as the value.  Blaken the image by passing `-100` |
 | `contrast`     | Number  | False    | Default value is `0`. If you want to double the contrast, pass `100` as the value.|
 | `exposure`     | Number  | False    | Adjust the exposure amount in the image.  `-100` to `100` are accepted values.  Defaults to `0`. |
@@ -510,12 +510,15 @@ When your job is complete a `POST` will be sent to an optional callback URL. The
 #### INPUT `array`
 The `input` array specifies the images that are to be used when processing the job. Input should be a publicly accessable URL or a valid [data URI](https://developer.mozilla.org/en-US/docs/data_URIs).
 
-**The following formats are supported:**
+**The following input formats are supported:**
 
 * `JPEG`
 * `PNG`
 * `GIF`
 * `SVG`
+* `PSD`
+* 'EPS'
+* `TIFF`
 
 #### OUTPUT `array`
 Specifies operations that are to be run against the images in the `input` array. Multiple outputs can be achieved by providing additional objects.
