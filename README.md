@@ -482,7 +482,7 @@ The `input` array specifies the images that are to be used when processing the j
 * `GIF`
 * `SVG`
 * `PSD`
-* 'EPS'
+* `EPS`
 * `TIFF`
 
 #### OUTPUT `array`
@@ -608,9 +608,29 @@ A full URL without the filename to which the output image(s) will be uploaded.
 
 **The following output locations / connection strings are supported:**
 
-* `s3://key:secret@bucket/path` Amazon S3
-* `cf://username:api_key@container/path` Rackspace Cloud Files (US)
-* `cf+uk://username:api_key@container/path` Rackspace Cloud Files (UK)
+*Amazon S3:*
+
+* `s3://key:secret@bucket/path` US Standard (US East & US West)
+* `s3+us-east-1://key:secret@bucket/path` US East (Northern Virginia)
+* `s3+us-west-1://key:secret@bucket/path` US West (Northern California)
+* `s3+us-west-2://key:secret@bucket/path` US West (Oregon)
+* `s3+eu-west-1://key:secret@bucket/path` EU (Ireland)
+* `s3+ap-southeast-1://key:secret@bucket/path` Asia Pacific (Singapore)
+* `s3+ap-southeast-2://key:secret@bucket/path` Asia Pacific (Sydney)
+* `s3+ap-northeast-1://key:secret@bucket/path` Asia Pacific (Tokyo)
+* `s3+sa-east-1://key:secret@bucket/path` South America (Sao Paulo)
+
+*Rackspace Cloud Files:*
+
+* `cf://username:api_key@container/path` Dallas (US)
+* `cf+ord://username:api_key@container/path` US (Chicago)
+* `cf+iad://username:api_key@container/path` US (Northern Virginia)
+* `cf+lon://username:api_key@container/path` EU (London)
+* `cf+hkg://username:api_key@container/path` Asia Pacific (Hong Kong)
+* `cf+syd://username:api_key@container/path` Asia Pacific (Sydney)
+
+*FTP / SFTP:*
+
 * `ftp://user:password@ftp.example.com/path` FTP
 * `sftp://user:password@sftp.example.com/path` SFTP
 
@@ -624,7 +644,6 @@ A full URL without the filename to which the output image(s) will be uploaded.
 
 > ** Default Hosting **
 >
-> If you would like to default your hosting to our Amazon S3 account, simply pass in `6px` as a masked connection string. The output will contain an absolute URL in the form of `http://cdn-6px.s3.amazonaws.com/:user_id/:job_id/:filename`.
 
 
 ## OUTPUT JSON
@@ -676,7 +695,7 @@ A full URL without the filename to which the output image(s) will be uploaded.
                             "width": 400,
                             "bytes": 322345
                         },
-                        "location": "http://cdn-6px.s3.amazonaws.com/53efc1e0e87c380644443106/53efc1e0e87c380644443106/taxi.png"
+                        "location": "http://6px-us-west-2.s3-us-west-2.amazonaws.com/53efc1e0e87c380644443106/53efc1e0e87c380644443106/taxi.png"
                     }
                 },
                 "duration": {
@@ -806,7 +825,7 @@ $ curl https://api.6px.io/v1/users/535702ffed81710200aa471d/jobs/53efc1e0e87c380
 							"width": 400,
 							"bytes": 322345
 						},
-						"location": "http://cdn-6px.s3.amazonaws.com/535702ffed81710200aa471d/53efc1e0e87c380644443106/taxi.png"
+						"location": "http://http://6px-us-west-2.s3-us-west-2.amazonaws.com//535702ffed81710200aa471d/53efc1e0e87c380644443106/taxi.png"
 					}
 				},
 				"duration": {
@@ -889,7 +908,7 @@ $ curl https://api.6px.io/v1/users/535702ffed81710200aa471d/jobs
 								"width": 400,
 								"bytes": 322345
 							},
-							"location": "http://cdn-6px.s3.amazonaws.com/535702ffed81710200aa471d/53efc1e0e87c380644443106/taxi.png"
+							"location": "http://http://6px-us-west-2.s3-us-west-2.amazonaws.com/535702ffed81710200aa471d/53efc1e0e87c380644443106/taxi.png"
 						}
 					},
 					"duration": {
@@ -958,7 +977,7 @@ $ curl https://api.6px.io/v1/users/535702ffed81710200aa471d/jobs
 								"width": 400,
 								"bytes": 322345
 							},
-							"location": "http://cdn-6px.s3.amazonaws.com/535702ffed81710200aa471d/53efc1e0e87c380644443107/taxi.png"
+							"location": "http://http://6px-us-west-2.s3-us-west-2.amazonaws.com/535702ffed81710200aa471d/53efc1e0e87c380644443107/taxi.png"
 						}
 					},
 					"duration": {
