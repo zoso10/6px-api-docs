@@ -355,39 +355,6 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 
 > **Note**: The `x` and `y` values can be omitted if you want to play your layered image at the top left corner (0,0)
 
-### TILE
-
-| Options        | Type     | Required | Description                                                               |
-|----------------|----------|--------------------------------------------------------------------------------------|
-| `size`         | Number   | False    | Specifies the `height` and `width` of the generated tile. The default size is 256px. |
-| `zoom`         | Number   | False    | Scales the image for a number of zoom levels (max 10 levels). This is done by scaling down the original image size before performing the tile method. The default zoom level is 10 (original size). |
-
-**Example 1:**
-```json
-{
-	"method": "tile",
-	"options": {
-		"size": 100,
-		"zoom": 4
-	}
-}
-```
-
-**Example 2:**
-```json
-{
-	"method": "tile",
-	"options": {
-		"size": 200
-	}
-}
-```
-> **Note**: The tile method generates a large number of images and will take some time. Generated images count towards your output quota.
->
-> To estimate the number of tiles that will be generated, use the following equation:
->
-> ![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%28%5Cfrac%7BimageWidth%7D%7B2%5E%7B%2810-zoomLevel%29%7D%7D%29%7D%7BtileSize%7D*%5Cfrac%7B%28%5Cfrac%7BimageHeight%7D%7B2%5E%7B%2810-zoomLevel%29%7D%7D%29%7D%7BtileSize%7D)
-
 ### ANALYZE
 
 | Options        | Required | Description                                                          									            	                                      |
