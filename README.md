@@ -554,14 +554,13 @@ Specifies which input(s) to use. If we specify more than one ref in this block, 
 		{
 			"methods": [
 				{
-					"method": "crop",
+					"method": "filter",
 					"options": {
-						"face": true,
-						"padding": 50
+						"sepia": 70
 					}
 				}
 			],
-			"tag": "Face",
+			"tag": "filtered",
 			"ref": {
 				"img3": "image.png"
 			}
