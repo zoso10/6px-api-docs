@@ -252,7 +252,6 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 | `width`   | Number  | False    | -                                                                              |
 | `x`       | Number  | False    | -                                                                              |
 | `y`       | Number  | False    | -                                                                              |
-| `padding` | Number  | False    | Sets specified padding when using `face` parameter.                            |
 
 **Example 1:**
 ```json
@@ -602,7 +601,7 @@ A full URL without the filename to which the output image(s) will be uploaded.
 
 > **FTP / SFTP**
 >
-> If the URL contains authentication with special characters, make sure that they are [properly escaped](http://en.wikipedia.org/wiki/Percent-encoding). We try to write from the root of your server, so use an absolute path for your URL to ensure that we can write to your server successfully.
+> [Properly escape](http://en.wikipedia.org/wiki/Percent-encoding) special characters if the URL contains authentication. We try to write from the root of your server, so use an absolute path for your URL to ensure that we can write to your server successfully.
 
 > **Masked Connection Strings**
 >
@@ -610,7 +609,7 @@ A full URL without the filename to which the output image(s) will be uploaded.
 
 > ** Default Hosting **
 >
-
+> Pass `6px` as the value for your URL to use the 6px S3 bucket (us-west-2). For high traffic applications or those that require custom URLs, we recommend using a true CDN such as [AWS CloudFront](http://aws.amazon.com/cloudfront/) or [Rackspace Cloud Files](http://www.rackspace.com/cloud/files/).
 
 ## OUTPUT JSON
 
