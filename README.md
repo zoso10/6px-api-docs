@@ -975,3 +975,5 @@ $ curl https://api.6px.io/v1/users/535702ffed81710200aa471d/jobs
 ## HELP US HELP YOU
 
 Please let us how we can make this API better. If you have a specific feature request or found a bug, please create a GitHub issue.
+
+[![Analytics](https://ga-beacon.appspot.com/UA-44211810-2/6px-api-docs)](https://github.com/igrigorik/ga-beacon)
