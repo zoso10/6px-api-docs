@@ -448,6 +448,7 @@ The `input` array specifies the images that are to be used when processing the j
 * `GIF`
 * `SVG`
 * `PSD`
+* `AI`
 * `EPS`
 * `TIFF`
 
