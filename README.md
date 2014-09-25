@@ -223,6 +223,8 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 | `force`   | Boolean | False    | This allows the change of the aspect ratio by forcing the dimensions |
 
 **Example 1:**
+
+This will create an image that maintains its aspect ratio, but does not exceed a width or height of 200.
 ```json
 {
 	"method": "resize",
@@ -244,6 +246,8 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 ```
 
 **Example 3:**
+
+This will create an image that is 400x400 and has the ability to change the aspect ratio.
 ```json
 {
 	"method": "resize",
