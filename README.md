@@ -220,6 +220,7 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 |---------|---------|------------|----------------------------------------------------------------------|
 | `height`  | Number  | False    | -                                                                    |
 | `width`   | Number  | False    | -                                                                    |
+| `force`   | Boolean | False    | This allows the change of the aspect ratio by forcing the dimensions |
 
 **Example 1:**
 ```json
@@ -238,6 +239,18 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 	"method": "resize",
 	"options": {
 		"width": 400
+	}
+}
+```
+
+**Example 3:**
+```json
+{
+	"method": "resize",
+	"options": {
+		"width": 400,
+		"height": 400,
+		"force": true
 	}
 }
 ```
