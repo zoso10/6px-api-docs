@@ -197,10 +197,11 @@ $ curl https://api.6px.io/v1/users/:user_id/jobs?created={gte}1999-12-12T13:33:0
 
 ### ROTATE
 
-| Options      | Type    | Required | Description                                                        |
-|--------------|---------|----------|--------------------------------------------------------------------|
-| `degrees`    | Number  | True     | -                                                                  |
-| `background` | String  | False    | The background color to fill.  Any hex or `transparent` works.     |
+| Options      | Type    | Required | Description                                                        			        |
+|--------------|---------|----------|---------------------------------------------------------------------------------------|
+| `degrees`    | Number  | False    | -                                                                  			        |
+| `background` | String  | False    | The background color to fill. A valid hex value or `transparent` works.     				    |
+| `orientation`| String  | False    | Pass `auto` as to parameter to automatically orient the image based on its Exif data. |
 
 **Example:**
 ```json
